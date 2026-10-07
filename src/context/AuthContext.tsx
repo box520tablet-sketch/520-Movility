@@ -64,8 +64,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } catch {
       // ignore
     }
-    // Default to the first registered user for instant preview, or null
-    return INITIAL_DEMO_USERS[0];
+    return null;
   });
 
   // Save users to storage
@@ -164,7 +163,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return { success: true };
     }
 
-    return { success: false, message: 'Credenciales de administrador incorrectas (Usuario: admin520 / Clave: 1995)' };
+    return { success: false, message: 'Usuario o contraseña de administrador incorrectos' };
   };
 
   const logout = () => {

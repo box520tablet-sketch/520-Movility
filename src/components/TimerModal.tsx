@@ -14,8 +14,7 @@ import {
   CheckCircle2,
   Volume2,
   VolumeX,
-  Flame,
-  ArrowRight
+  Flame
 } from 'lucide-react';
 
 interface TimerModalProps {
@@ -135,17 +134,17 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
   const progressPercent = Math.min(100, Math.max(0, ((currentMax - timeLeft) / currentMax) * 100));
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-4xl bg-[#111115] border border-[#262630] rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-4xl bg-white dark:bg-[#111115] border border-zinc-200 dark:border-[#262630] rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh] transition-colors">
         {/* Top Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#22222a] bg-[#0c0c0e]">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-[#22222a] bg-zinc-50 dark:bg-[#0c0c0e]">
           <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-[#FFEE00] animate-pulse" />
+            <span className="w-3 h-3 rounded-full bg-[#FFEE00] border border-black/20 animate-pulse" />
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#FFEE00]">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-900 dark:text-[#FFEE00]">
                 Protocolo Guiado 520 Movility
               </span>
-              <h2 className="font-display text-lg sm:text-xl font-bold uppercase tracking-wide text-white truncate max-w-sm sm:max-w-lg">
+              <h2 className="font-display text-lg sm:text-xl font-bold uppercase tracking-wide text-zinc-900 dark:text-white truncate max-w-sm sm:max-w-lg">
                 {exercise.title}
               </h2>
             </div>
@@ -154,14 +153,14 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsMuted(!isMuted)}
-              className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-xl transition-colors"
+              className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-xl transition-colors"
               title={isMuted ? 'Activar sonido' : 'Silenciar beeps'}
             >
-              {isMuted ? <VolumeX className="w-5 h-5 text-red-400" /> : <Volume2 className="w-5 h-5 text-[#FFEE00]" />}
+              {isMuted ? <VolumeX className="w-5 h-5 text-red-500" /> : <Volume2 className="w-5 h-5 text-zinc-900 dark:text-[#FFEE00]" />}
             </button>
             <button
               onClick={onClose}
-              className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-xl transition-colors"
+              className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-xl transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -171,10 +170,10 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
         {/* Modal Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 flex-1 overflow-y-auto">
           {/* Left Column: Embedded Video & Coaching Tips */}
-          <div className="lg:col-span-7 p-4 sm:p-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#22222a] bg-[#0e0e12]">
+          <div className="lg:col-span-7 p-4 sm:p-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-zinc-200 dark:border-[#22222a] bg-zinc-50/60 dark:bg-[#0e0e12]">
             <div>
               {/* Embedded Video */}
-              <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black border border-[#23232c] shadow-lg mb-4">
+              <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black border border-zinc-200 dark:border-[#23232c] shadow-lg mb-4">
                 {embedUrl ? (
                   <iframe
                     src={embedUrl}
@@ -192,49 +191,49 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
 
               {/* Coaching Tips */}
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-400">
-                  <span className="text-[#FFEE00] font-bold">MATERIAL:</span>
+                <div className="flex items-center gap-2 text-xs font-semibold text-zinc-600 dark:text-zinc-400">
+                  <span className="text-zinc-900 dark:text-[#FFEE00] font-bold">MATERIAL:</span>
                   <span>{exercise.equipment}</span>
-                  <span className="text-zinc-600">·</span>
-                  <span className="text-[#FFEE00] font-bold">ZONA:</span>
+                  <span className="text-zinc-400">·</span>
+                  <span className="text-zinc-900 dark:text-[#FFEE00] font-bold">ZONA:</span>
                   <span>{exercise.targetFocus}</span>
                 </div>
-                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed bg-[#14141a] p-3 rounded-xl border border-[#22222a]">
+                <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed bg-white dark:bg-[#14141a] p-3 rounded-xl border border-zinc-200 dark:border-[#22222a]">
                   {exercise.description}
                 </p>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-[#1d1d24] flex items-center justify-between text-xs text-zinc-500">
+            <div className="mt-4 pt-3 border-t border-zinc-200 dark:border-[#1d1d24] flex items-center justify-between text-xs text-zinc-500">
               <span>Tiempo total acumulado: {formatTime(totalSecondsElapsed)}</span>
-              <span className="text-[#FFEE00] font-medium">Inspirado en metodología GOWOD</span>
+              <span className="text-zinc-900 dark:text-[#FFEE00] font-medium">Inspirado en metodología GOWOD</span>
             </div>
           </div>
 
           {/* Right Column: Athletic Timer Console */}
-          <div className="lg:col-span-5 p-6 flex flex-col items-center justify-center bg-[#131317]">
+          <div className="lg:col-span-5 p-6 flex flex-col items-center justify-center bg-zinc-100/70 dark:bg-[#131317]">
             {phase === 'finished' ? (
               // Workout Finished Celebration
               <div className="text-center py-8 space-y-4 animate-in zoom-in-95 duration-200">
-                <div className="w-20 h-20 mx-auto rounded-full bg-[#FFEE00]/15 border-2 border-[#FFEE00] flex items-center justify-center text-[#FFEE00] shadow-[0_0_25px_rgba(255,238,0,0.3)]">
+                <div className="w-20 h-20 mx-auto rounded-full bg-[#FFEE00] border-2 border-black/20 flex items-center justify-center text-black shadow-[0_0_25px_rgba(255,238,0,0.35)]">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <div>
-                  <h3 className="font-display text-3xl font-black uppercase text-white tracking-tight">
+                  <h3 className="font-display text-3xl font-black uppercase text-zinc-900 dark:text-white tracking-tight">
                     ¡EJERCICIO COMPLETADO!
                   </h3>
-                  <p className="text-xs text-zinc-400 mt-1 max-w-xs mx-auto">
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 max-w-xs mx-auto">
                     Excelente trabajo de rango articular. Tu articulación está preparada para el WOD.
                   </p>
                 </div>
-                <div className="p-3 bg-[#191920] rounded-xl border border-[#272732] inline-flex items-center gap-2 text-xs text-zinc-300">
-                  <Flame className="w-4 h-4 text-[#FFEE00]" />
+                <div className="p-3 bg-white dark:bg-[#191920] rounded-xl border border-zinc-200 dark:border-[#272732] inline-flex items-center gap-2 text-xs text-zinc-800 dark:text-zinc-300 shadow-sm">
+                  <Flame className="w-4 h-4 text-amber-500 dark:text-[#FFEE00]" />
                   <span>Rutina registrada en tu perfil de atleta</span>
                 </div>
                 <div>
                   <button
                     onClick={onClose}
-                    className="w-full py-3.5 px-6 rounded-xl bg-[#FFEE00] hover:bg-[#fff233] text-black font-extrabold uppercase tracking-wide text-sm transition-all shadow-md shadow-[#FFEE00]/25"
+                    className="w-full py-3.5 px-6 rounded-xl bg-[#FFEE00] hover:bg-[#fff233] text-black font-extrabold uppercase tracking-wide text-sm transition-all shadow-md shadow-[#FFEE00]/25 border border-black/10"
                   >
                     Volver a la Lista
                   </button>
@@ -246,22 +245,22 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
                 {/* Phase Indicator Badge */}
                 <div className="text-center">
                   {phase === 'stretch-left' && (
-                    <span className="px-4 py-1.5 rounded-full bg-[#FFEE00]/15 border border-[#FFEE00]/50 text-[#FFEE00] font-display text-sm sm:text-base font-bold uppercase tracking-wider">
+                    <span className="px-4 py-1.5 rounded-full bg-[#FFEE00] text-black font-display text-sm sm:text-base font-extrabold uppercase tracking-wider shadow-sm border border-black/10">
                       Lado Izquierdo
                     </span>
                   )}
                   {phase === 'rest-switch' && (
-                    <span className="px-4 py-1.5 rounded-full bg-orange-500/15 border border-orange-500/50 text-orange-400 font-display text-sm sm:text-base font-bold uppercase tracking-wider animate-pulse">
+                    <span className="px-4 py-1.5 rounded-full bg-orange-500 text-white font-display text-sm sm:text-base font-extrabold uppercase tracking-wider shadow-sm animate-pulse">
                       ¡Cambio de Lado! Prepara posición
                     </span>
                   )}
                   {phase === 'stretch-right' && (
-                    <span className="px-4 py-1.5 rounded-full bg-[#FFEE00]/15 border border-[#FFEE00]/50 text-[#FFEE00] font-display text-sm sm:text-base font-bold uppercase tracking-wider">
+                    <span className="px-4 py-1.5 rounded-full bg-[#FFEE00] text-black font-display text-sm sm:text-base font-extrabold uppercase tracking-wider shadow-sm border border-black/10">
                       Lado Derecho
                     </span>
                   )}
                   {phase === 'stretch-both' && (
-                    <span className="px-4 py-1.5 rounded-full bg-[#FFEE00]/15 border border-[#FFEE00]/50 text-[#FFEE00] font-display text-sm sm:text-base font-bold uppercase tracking-wider">
+                    <span className="px-4 py-1.5 rounded-full bg-[#FFEE00] text-black font-display text-sm sm:text-base font-extrabold uppercase tracking-wider shadow-sm border border-black/10">
                       Ambos Lados (Continuo)
                     </span>
                   )}
@@ -269,12 +268,12 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
 
                 {/* Giant Digital Stopwatch Display */}
                 <div className="relative flex flex-col items-center justify-center my-4">
-                  <div className="font-display text-6xl sm:text-7xl font-black text-white tracking-tight tabular-nums select-none drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+                  <div className="font-display text-6xl sm:text-7xl font-black text-zinc-900 dark:text-white tracking-tight tabular-nums select-none drop-shadow-sm">
                     {formatTime(timeLeft)}
                   </div>
 
-                  {/* Circular / Linear Progress Bar */}
-                  <div className="w-48 sm:w-56 h-2 bg-[#202028] rounded-full overflow-hidden mt-3">
+                  {/* Linear Progress Bar */}
+                  <div className="w-48 sm:w-56 h-2.5 bg-zinc-300 dark:bg-[#202028] rounded-full overflow-hidden mt-3 shadow-inner">
                     <div
                       className="h-full bg-[#FFEE00] transition-all duration-300"
                       style={{ width: `${progressPercent}%` }}
@@ -286,13 +285,13 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => adjustTime(-15)}
-                    className="px-3 py-1.5 rounded-lg bg-[#1c1c24] hover:bg-[#252530] text-zinc-300 text-xs font-bold border border-[#292934] flex items-center gap-1 transition-colors"
+                    className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#1c1c24] hover:bg-zinc-200 dark:hover:bg-[#252530] text-zinc-800 dark:text-zinc-300 text-xs font-bold border border-zinc-300 dark:border-[#292934] flex items-center gap-1 transition-colors shadow-sm"
                   >
                     <Minus className="w-3 h-3" /> 15s
                   </button>
                   <button
                     onClick={() => adjustTime(15)}
-                    className="px-3 py-1.5 rounded-lg bg-[#1c1c24] hover:bg-[#252530] text-zinc-300 text-xs font-bold border border-[#292934] flex items-center gap-1 transition-colors"
+                    className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#1c1c24] hover:bg-zinc-200 dark:hover:bg-[#252530] text-zinc-800 dark:text-zinc-300 text-xs font-bold border border-zinc-300 dark:border-[#292934] flex items-center gap-1 transition-colors shadow-sm"
                   >
                     <Plus className="w-3 h-3" /> 15s
                   </button>
@@ -302,7 +301,7 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
                 <div className="w-full flex items-center justify-center gap-3 pt-2">
                   <button
                     onClick={handleResetCurrent}
-                    className="p-3.5 rounded-xl bg-[#1c1c24] hover:bg-[#272733] text-zinc-300 border border-[#2a2a38] transition-colors"
+                    className="p-3.5 rounded-xl bg-white dark:bg-[#1c1c24] hover:bg-zinc-200 dark:hover:bg-[#272733] text-zinc-800 dark:text-zinc-300 border border-zinc-300 dark:border-[#2a2a38] transition-colors shadow-sm"
                     title="Reiniciar este intervalo"
                   >
                     <RotateCcw className="w-5 h-5" />
@@ -310,20 +309,20 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
 
                   <button
                     onClick={() => setIsRunning(!isRunning)}
-                    className={`py-3.5 px-8 rounded-2xl font-display uppercase tracking-wider text-lg font-black flex items-center justify-center gap-2 transition-all shadow-lg select-none ${
+                    className={`py-3.5 px-8 rounded-2xl font-display uppercase tracking-wider text-lg font-black flex items-center justify-center gap-2 transition-all shadow-lg select-none border border-black/10 ${
                       isRunning
-                        ? 'bg-[#FFEE00] text-black hover:bg-[#fff233] shadow-[#FFEE00]/20'
-                        : 'bg-emerald-500 text-black hover:bg-emerald-400 shadow-emerald-500/20'
+                        ? 'bg-[#FFEE00] text-black hover:bg-[#fff233] shadow-[#FFEE00]/25'
+                        : 'bg-emerald-500 text-black hover:bg-emerald-400 shadow-emerald-500/25'
                     }`}
                   >
                     {isRunning ? (
                       <>
-                        <Pause className="w-5 h-5 fill-black" />
+                        <Pause className="w-5 h-5 fill-black text-black" />
                         <span>Pausar</span>
                       </>
                     ) : (
                       <>
-                        <Play className="w-5 h-5 fill-black ml-0.5" />
+                        <Play className="w-5 h-5 fill-black text-black ml-0.5" />
                         <span>Continuar</span>
                       </>
                     )}
@@ -331,7 +330,7 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
 
                   <button
                     onClick={handleSkipNext}
-                    className="p-3.5 rounded-xl bg-[#1c1c24] hover:bg-[#272733] text-zinc-300 border border-[#2a2a38] transition-colors"
+                    className="p-3.5 rounded-xl bg-white dark:bg-[#1c1c24] hover:bg-zinc-200 dark:hover:bg-[#272733] text-zinc-800 dark:text-zinc-300 border border-zinc-300 dark:border-[#2a2a38] transition-colors shadow-sm"
                     title="Siguiente lado o completar"
                   >
                     <SkipForward className="w-5 h-5" />
@@ -350,7 +349,7 @@ export const TimerModal: React.FC<TimerModalProps> = ({ exercise, onClose }) => 
                       }
                     }
                   }}
-                  className="text-xs text-zinc-500 hover:text-[#FFEE00] underline transition-colors pt-2"
+                  className="text-xs text-zinc-500 hover:text-black dark:hover:text-[#FFEE00] underline transition-colors pt-2"
                 >
                   Terminar ejercicio directamente
                 </button>

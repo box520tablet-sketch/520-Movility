@@ -39,13 +39,13 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
   };
 
   return (
-    <div className="bg-[#0c0c0e] border-b border-[#22222a] py-3 px-4 sm:px-6">
+    <div className="bg-white dark:bg-[#0c0c0e] border-b border-zinc-200 dark:border-[#22222a] py-3 px-4 sm:px-6 transition-colors">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-2">
           {/* Scroll Left button */}
           <button
             onClick={() => handleScroll('left')}
-            className="hidden sm:flex p-2 text-zinc-400 hover:text-white bg-[#141419] hover:bg-[#1f1f26] border border-[#262630] rounded-xl shrink-0 transition-colors"
+            className="hidden sm:flex p-2 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white bg-zinc-100 hover:bg-zinc-200 dark:bg-[#141419] dark:hover:bg-[#1f1f26] border border-zinc-300 dark:border-[#262630] rounded-xl shrink-0 transition-colors"
             aria-label="Desplazar a la izquierda"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -67,8 +67,8 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
                     onClick={() => setActiveTabId(tab.id)}
                     className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all select-none border ${
                       isSelected
-                        ? 'bg-[#FFEE00] text-black border-[#FFEE00] shadow-md shadow-[#FFEE00]/20 font-extrabold'
-                        : 'bg-[#141419] text-zinc-300 border-[#252530] hover:border-zinc-500 hover:text-white'
+                        ? 'bg-[#FFEE00] text-black border-[#FFEE00] shadow-md shadow-[#FFEE00]/25 font-extrabold border-black/10'
+                        : 'bg-zinc-100 hover:bg-zinc-200 dark:bg-[#141419] dark:hover:bg-[#1f1f26] text-zinc-800 dark:text-zinc-300 border-zinc-300 dark:border-[#252530] hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-black dark:hover:text-white'
                     }`}
                   >
                     <span>{tab.name}</span>
@@ -76,7 +76,7 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
                       className={`text-[10px] font-sans px-1.5 py-0.5 rounded-md tabular-nums ${
                         isSelected
                           ? 'bg-black/20 text-black font-black'
-                          : 'bg-[#202028] text-zinc-400'
+                          : 'bg-zinc-200 dark:bg-[#202028] text-zinc-700 dark:text-zinc-400 font-bold'
                       }`}
                     >
                       {count}
@@ -85,13 +85,13 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
 
                   {/* Admin inline quick actions */}
                   {isAdmin && (
-                    <div className="hidden group-hover:flex items-center gap-1 ml-1 bg-[#1a1a22] border border-[#30303c] rounded-lg p-1 shadow-lg shrink-0">
+                    <div className="hidden group-hover:flex items-center gap-1 ml-1 bg-white dark:bg-[#1a1a22] border border-zinc-300 dark:border-[#30303c] rounded-lg p-1 shadow-lg shrink-0">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           onEditTab(tab.id);
                         }}
-                        className="p-1 text-zinc-300 hover:text-[#FFEE00] hover:bg-zinc-800 rounded transition-colors"
+                        className="p-1 text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-[#FFEE00] hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded transition-colors"
                         title="Editar nombre de pestaña"
                       >
                         <Edit2 className="w-3 h-3" />
@@ -102,7 +102,7 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
                             e.stopPropagation();
                             handleDeleteTab(tab.id, tab.name);
                           }}
-                          className="p-1 text-zinc-300 hover:text-red-400 hover:bg-zinc-800 rounded transition-colors"
+                          className="p-1 text-zinc-600 dark:text-zinc-300 hover:text-red-500 rounded transition-colors"
                           title="Eliminar pestaña"
                         >
                           <Trash2 className="w-3 h-3" />
@@ -118,7 +118,7 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
             {isAdmin && (
               <button
                 onClick={onOpenNewTabModal}
-                className="shrink-0 flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#1c1b12] text-[#FFEE00] border border-dashed border-[#FFEE00]/50 hover:bg-[#FFEE00] hover:text-black hover:border-solid hover:border-[#FFEE00] transition-all"
+                className="shrink-0 flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-amber-50 dark:bg-[#1c1b12] text-zinc-900 dark:text-[#FFEE00] border border-dashed border-amber-400 dark:border-[#FFEE00]/50 hover:bg-[#FFEE00] hover:text-black hover:border-solid hover:border-[#FFEE00] transition-all"
                 title="Crear nueva pestaña de movilidad"
               >
                 <Plus className="w-3.5 h-3.5" />
@@ -130,7 +130,7 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
           {/* Scroll Right button */}
           <button
             onClick={() => handleScroll('right')}
-            className="hidden sm:flex p-2 text-zinc-400 hover:text-white bg-[#141419] hover:bg-[#1f1f26] border border-[#262630] rounded-xl shrink-0 transition-colors"
+            className="hidden sm:flex p-2 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white bg-zinc-100 hover:bg-zinc-200 dark:bg-[#141419] dark:hover:bg-[#1f1f26] border border-zinc-300 dark:border-[#262630] rounded-xl shrink-0 transition-colors"
             aria-label="Desplazar a la derecha"
           >
             <ChevronRight className="w-4 h-4" />
@@ -139,9 +139,9 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
 
         {/* Tab description text if present */}
         {activeTab?.description && (
-          <div className="mt-3 pt-2 border-t border-[#1d1d24] flex items-center justify-between text-xs text-zinc-400">
-            <p className="line-clamp-1 italic text-zinc-400">
-              <span className="text-[#FFEE00] font-semibold not-italic mr-1.5">Objetivo:</span>
+          <div className="mt-3 pt-2 border-t border-zinc-200 dark:border-[#1d1d24] flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400">
+            <p className="line-clamp-1 italic text-zinc-600 dark:text-zinc-400">
+              <span className="text-zinc-900 dark:text-[#FFEE00] font-bold not-italic mr-1.5">Objetivo:</span>
               {activeTab.description}
             </p>
           </div>
